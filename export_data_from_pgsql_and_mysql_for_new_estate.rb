@@ -1,10 +1,9 @@
 #encoding: utf-8
-#
-# 导出二手房的数据
-# 
 require "sequel"
 require "pg"
 require 'mysql2'
+
+# 导出新房的数据
 
 data = File.new('export.dat',"w")
 
@@ -25,8 +24,11 @@ MYSQL_DB = Sequel.connect(:adapter  => 'mysql2',
 dic = MYSQL_DB[:sys_dictionary]
 
 # 二手房的数据导出，用forsechandhouse指定
-PGSQL_DB.fetch("select estname,districtname ,estusage_ids from estate_info where cityid =1 and forsechandhouse is true and deleted is false") do |row|
+PGSQL_DB.fetch("select estname,districtname ,estusage_ids from estate_info where cityid =1 and forsechandhouse is false and deleted is false") do |row|
     ids = row[:estusage_ids]
+    if ids.nil?
+        next
+    end
     ids = ids.split(",").select {|it| it!=""}
     item_name = []
     ids.each do |id| 

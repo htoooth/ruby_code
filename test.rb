@@ -1,2 +1,28 @@
+class Point
+    attr_reader :x,:y
+    def initialize(x,y)
+        @x,@y = x,y
+    end
 
-objectid,xmmc,yddwmc,xmsd,zdh,gdfs,crhth,qdtdsyqsj,ydwz,gdtj,tdsyqlx,gdczexx,ghyt,dkjb,ghlhlxx,ghjzmdxx,ghjzmdsx,ghrjlxx,ghrjlsx,gdmj,wcqmj,ydjdmj,ydjdsj,sjjdmj,sjjdsj,wjdmj,dqwjdmj,ydkgsj,wkgts,sjkgsj,ydjgsj,sjjgsj,wjgts,sfxz,xzyy,nczfz,ykgmj,wkgmj,crmj,ydqk,tdzsh,sfsd,dyqr,dymj,dypgje,dkje,dydjsj,txqzsh,dyqx,jyrq,sfsdfy,cffy,cfrq,cfwh,jfrq,czqk,zjzmj,yjsydmj,gzwzdmj,dczdmj,xzbghshfwssydmj,ldmj,jzjdmj,gdzcljtr,nztr,wztr,nyysr,nnsze,sfdy,dyyy,czyj,bz,xzqdm,xzqmc,bkid,bk
+    def to_s
+        "(#{@x},#{@y})"
+    end
+
+    def self.sum(*points)
+        x = y =0
+        points.each {|p| x += p.x; y+= p.y}
+        Point.new(x,y)
+    end
+end
+
+module Test
+    def prt
+        p "hello"
+        # self.each{|x| p x}
+    end
+
+    def self.hello
+        p "world"
+    end
+end
+
