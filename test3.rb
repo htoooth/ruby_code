@@ -1,2 +1,5 @@
-#encoding: utf-8
-print "你好"
+require "yaml"
+
+a= { "create" => [['a'],['b']]}.to_yaml
+
+p a
